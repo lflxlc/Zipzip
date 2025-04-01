@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zipzip - 高效文件压缩与解压缩工具</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+       .header {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+       .icon {
+            font-size: 4rem;
+            color: #007AFF;
+            margin-bottom: 1rem;
+        }
+       .badge {
+            margin-top: 2rem;
+        }
+       .section {
+            margin-bottom: 2rem;
+        }
+       .section h2 {
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+       .list {
+            columns: 2;
+            margin-left: 2rem;
+        }
+       .lang-list {
+            columns: 3;
+            margin-left: 2rem;
+        }
+        @media (max-width: 600px) {
+           .list, .lang-list {
+                columns: 1;
+            }
+        }
+        blockquote {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-left: 4px solid #007AFF;
+            margin: 1rem 0;
+        }
+       .language-switcher {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: white;
+            padding: 5px 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            display: flex;
+            gap: 10px;
+        }
+       .language-switcher button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+       .language-switcher button:hover {
+            color: #007AFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="language-switcher">
+            <button id="langButton">英文</button>
+        </div>
+        <div class="icon">
+            <i class="fas fa-file-archive"></i>
+        </div>
+        <h1>Zipzip</h1>
+        <p id="zhDesc">体验高效便捷的文件压缩与解压缩！支持多种格式，具备加密压解缩功能，可右键Services操作，还能通过拖拽实现功能。遵循沙盒（App Sandbox）安全机制，仅申请必要权限以保障用户数据安全，严格限制应用访问范围。多语言支持，满足全球用户需求。</p>
+        <p id="enDesc" style="display: none;">Experience efficient and convenient file compression and decompression! Supports multiple formats, has encryption compression and decompression functions, can be operated through the right - click Services, and can also be achieved by dragging and dropping. Follows the App Sandbox security mechanism, only requests necessary permissions to ensure user data security, and strictly limits the application's access scope. Multilingual support to meet the needs of users worldwide.</p>
+    </div>
+
+    <div class="section">
+        <h2 id="zhCoreFeatures">核心功能</h2>
+        <h2 id="enCoreFeatures" style="display: none;">Core Features</h2>
+        <blockquote id="zhCoreFeaturesDesc">
+            该macOS应用程序致力于为用户高效处理文件压缩与解压缩任务。
+        </blockquote>
+        <blockquote id="enCoreFeaturesDesc" style="display: none;">
+            This macOS application is dedicated to efficiently handling file compression and decompression tasks for users.
+        </blockquote>
+        <ul class="list">
+            <li id="zhFormatSupport">支持<b>20+压缩格式</b>（ZIP/TAR/7Z等）</li>
+            <li id="enFormatSupport" style="display: none;">Supports <b>20+ compression formats</b> (ZIP/TAR/7Z, etc.)</li>
+            <li id="zhEncryption">加密压缩与解压（仅ZIP/7Z）</li>
+            <li id="enEncryption" style="display: none;">Encryption compression and decompression (only ZIP/7Z)</li>
+            <li id="zhRightClick">右键服务集成（通过系统设置启用）</li>
+            <li id="enRightClick" style="display: none;">Right - click service integration (enabled through system settings)</li>
+            <li id="zhDragDrop">拖拽直接处理文件</li>
+            <li id="enDragDrop" style="display: none;">Directly process files by dragging and dropping</li>
+            <li id="zhSandbox">严格沙盒安全机制</li>
+            <li id="enSandbox" style="display: none;">Strict sandbox security mechanism</li>
+            <li id="zhMultilingual">20+语言国际化支持</li>
+            <li id="enMultilingual" style="display: none;">20+ language internationalization support</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 id="zhFormatSupportTitle">格式支持</h2>
+        <h2 id="enFormatSupportTitle" style="display: none;">Format Support</h2>
+        <h3 id="zhCompressionSupport">压缩支持</h3>
+        <h3 id="enCompressionSupport" style="display: none;">Compression Support</h3>
+        <code id="zhCompressionFormats">
+            ZIP, TAR, 7Z, GZ, GZIP, TGZ, BZ2, BZIP2, TBZ2, TBZ, XZ, TXZ, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, WIM, SWM
+        </code>
+        <code id="enCompressionFormats" style="display: none;">
+            ZIP, TAR, 7Z, GZ, GZIP, TGZ, BZ2, BZIP2, TBZ2, TBZ, XZ, TXZ, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, WIM, SWM
+        </code>
+
+        <h3 id="zhDecompressionSupport">解压缩支持</h3>
+        <h3 id="enDecompressionSupport" style="display: none;">Decompression Support</h3>
+        <code id="zhDecompressionFormats">
+            7Z, BZ2, BZIP2, TBZ2, TBZ, GZ, GZIP, TGZ, TAR, XZ, TXZ, ZIP, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, APM, AR, A, DEB, LIB, ARJ, CAB, CHM, CHW, CHI, CHQ, MSI, MSP, DOC, XLS, PPT, CPIO, CRAMFS, DMG, EXT, EXT2, EXT3, EXT4, IMG, FAT, HFS, HFSX, HXS, HXI, HXR, HXQ, HXW, LIT, IHEX, ISO, LZH, LHA, LZMA, MBR, MSLZ, MUB, NSIS, NTFS, RAR, R00, RPM, PPMD, QCOW, QCOW2, QCOW2C, 001, 002, SQUASHFS, UDF, SCAP, UEFIF, VDI, VHD, VMDK, ESD, XAR, PKG, Z, TAZ
+        </code>
+        <code id="enDecompressionFormats" style="display: none;">
+            7Z, BZ2, BZIP2, TBZ2, TBZ, GZ, GZIP, TGZ, TAR, XZ, TXZ, ZIP, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, APM, AR, A, DEB, LIB, ARJ, CAB, CHM, CHW, CHI, CHQ, MSI, MSP, DOC, XLS, PPT, CPIO, CRAMFS, DMG, EXT, EXT2, EXT3, EXT4, IMG, FAT, HFS, HFSX, HXS, HXI, HXR, HXQ, HXW, LIT, IHEX, ISO, LZH, LHA, LZMA, MBR, MSLZ, MUB, NSIS, NTFS, RAR, R00, RPM, PPMD, QCOW, QCOW2, QCOW2C, 001, 002, SQUASHFS, UDF, SCAP, UEFIF, VDI, VHD, VMDK, ESD, XAR, PKG, Z, TAZ
+        </code>
+    </div>
+
+    <div class="section">
+        <h2 id="zhOperationMethods">操作方式</h2>
+        <h2 id="enOperationMethods" style="display: none;">Operation Methods</h2>
+        <blockquote id="zhOperationDesc">
+            用户可通过“系统设置->键盘->键盘快捷键->服务->通用选择”启用右键Services功能，便捷地对选定文件执行压缩、解压缩操作。同时，将文件拖曳至应用界面，就能轻松完成压缩或解压缩任务，操作流程简洁明了，提升文件处理效率。
+        </blockquote>
+        <blockquote id="enOperationDesc" style="display: none;">
+            Users can enable the right - click Services function through "System Settings -> Keyboard -> Keyboard Shortcuts -> Services -> General Selection" to conveniently perform compression and decompression operations on selected files. At the same time, by dragging files to the application interface, compression or decompression tasks can be easily completed. The operation process is simple and clear, improving file processing efficiency.
+        </blockquote>
+        <ol>
+            <li id="zhRightClickService">右键服务：通过系统设置 -> 键盘 -> 服务 启用</li>
+            <li id="enRightClickService" style="display: none;">Right - click service: Enable through System Settings -> Keyboard -> Services</li>
+            <li id="zhDragDropOperation">拖拽操作：直接将文件拖入应用窗口</li>
+            <li id="enDragDropOperation" style="display: none;">Drag and drop operation: Directly drag files into the application window</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2 id="zhSecurityMechanism">安全机制</h2>
+        <h2 id="enSecurityMechanism" style="display: none;">Security Mechanism</h2>
+        <blockquote id="zhSecurityDesc">
+            本App严格遵循沙盒（App Sandbox）安全机制，仅申请必要权限以保障用户数据安全，严格限制应用访问范围，确保用户隐私与数据安全。
+        </blockquote>
+        <blockquote id="enSecurityDesc" style="display: none;">
+            This App strictly follows the App Sandbox security mechanism, only requests necessary permissions to ensure user data security, strictly limits the application's access scope, and ensures user privacy and data security.
+        </blockquote>
+        <p id="zhSecurityPoints">
+            <i class="fas fa-lock"></i> 严格遵循沙盒安全机制<br>
+            <i class="fas fa-shield-alt"></i> 仅申请必要权限<br>
+            <i class="fas fa-check-circle"></i> 数据访问范围严格限制
+        </p>
+        <p id="enSecurityPoints" style="display: none;">
+            <i class="fas fa-lock"></i> Strictly follows the sandbox security mechanism<br>
+            <i class="fas fa-shield-alt"></i> Only requests necessary permissions<br>
+            <i class="fas fa-check-circle"></i> Strictly limits the data access scope
+        </p>
+    </div>
+
+    <div class="section">
+        <h2 id="zhLanguageSupport">语言支持</h2>
+        <h2 id="enLanguageSupport" style="display: none;">Language Support</h2>
+        <blockquote id="zhLanguageDesc">
+            支持简体中文、英语、阿拉伯语、丹麦语等多达20多种语言，充分考虑到全球不同地区用户的使用习惯，为用户提供无语言障碍的使用体验。
+        </blockquote>
+        <blockquote id="enLanguageDesc" style="display: none;">
+            Supports more than 20 languages including Simplified Chinese, English, Arabic, Danish, etc., fully considering the usage habits of users in different regions around the world, providing users with a language - free usage experience.
+        </blockquote>
+        <ul class="lang-list">
+            <li id="zhLangList">简体中文 (简体中文)</li>
+            <li id="enLangList" style="display: none;">Simplified Chinese (Simplified Chinese)</li>
+            <li id="zhTraditionalChinese">繁体中文 (繁體中文)</li>
+            <li id="enTraditionalChinese" style="display: none;">Traditional Chinese (Traditional Chinese)</li>
+            <li id="zhHongKongTraditional">香港繁体 (香港繁體)</li>
+            <li id="enHongKongTraditional" style="display: none;">Hong Kong Traditional (Hong Kong Traditional)</li>
+            <li id="zhEnglish">英语 (English)</li>
+            <li id="enEnglish" style="display: none;">English (English)</li>
+            <li id="zhSpanish">西班牙语 (Español)</li>
+            <li id="enSpanish" style="display: none;">Spanish (Español)</li>
+            <li id="zhArabic">阿拉伯语 (العربية)</li>
+            <li id="enArabic" style="display: none;">Arabic (العربية)</li>
+            <li id="zhPortuguese">葡萄牙语 (巴西) (Português do Brasil)</li>
+            <li id="enPortuguese" style="display: none;">Portuguese (Brazil) (Português do Brasil)</li>
+            <li id="zhRussian">俄语 (Русский)</li>
+            <li id="enRussian" style="display: none;">Russian (Русский)</li>
+            <li id="zhIndonesian">印尼语 (Bahasa Indonesia)</li>
+            <li id="enIndonesian" style="display: none;">Indonesian (Bahasa Indonesia)</li>
+            <li id="zhVietnamese">越南语 (Tiếng Việt)</li>
+            <li id="enVietnamese" style="display: none;">Vietnamese (Tiếng Việt)</li>
+            <li id="zhKorean">韩语 (한국어)</li>
+            <li id="enKorean" style="display: none;">Korean (한국어)</li>
+            <li id="zhThai">泰语 (ไทย)</li>
+            <li id="enThai" style="display: none;">Thai (ไทย)</li>
+            <li id="zhFrench">法语 (Français)</li>
+            <li id="enFrench" style="display: none;">French (Français)</li>
+            <li id="zhGerman">德语 (Deutsch)</li>
+            <li id="enGerman" style="display: none;">German (Deutsch)</li>
+            <li id="zhTurkish">土耳其语 (Türkçe)</li>
+            <li id="enTurkish" style="display: none;">Turkish (Türkçe)</li>
+            <li id="zhItalian">意大利语 (Italiano)</li>
+            <li id="enItalian" style="display: none;">Italian (Italiano)</li>
+            <li id="zhDutch">荷兰语 (Nederlands)</li>
+            <li id="enDutch" style="display: none;">Dutch (Nederlands)</li>
+            <li id="zhPolish">波兰语 (Polski)</li>
+            <li id="enPolish" style="display: none;">Polish (Polski)</li>
+            <li id="zhHebrew">希伯来语 (עברית)</li>
+            <li id="enHebrew" style="display: none;">Hebrew (עברית)</li>
+            <li id="zhZulu">祖鲁语 (isiZulu)</li>
+            <li id="enZulu" style="display: none;">Zulu (isiZulu)</li>
+            <li id="zhFinnish">芬兰语 (Suomi)</li>
+            <li id="enFinnish" style="display: none;">Finnish (Suomi)</li>
+            <li id="zhHungarian">匈牙利语 (Magyar)</li>
+            <li id="enHungarian" style="display: none;">Hungarian (Magyar)</li>
+            <li id="zhAfrikaans">南非荷兰语 (Afrikaans)</li>
+            <li id="enAfrikaans" style="display: none;">Afrikaans (Afrikaans)</li>
+            <li id="zhDanish">丹麦语 (Dansk)</li>
+            <li id="enDanish" style="display: none;">Danish (Dansk)</li>
+            <li id="zhJapanese">日语 (日本語)</li>
+            <li id="enJapanese" style="display: none;">Japanese (日本語)</li>
+        </ul>
+    </div>
+
+    <div class="badge">
+        <a id="zhBadge" href="" target="_blank">
+            <img src="./Res/Download_on_the_Mac_App_Store_Badge_CNSC_RGB_blk_092917.svg" alt="Download on the Mac App Store" width="180">
+        </a>
+        <a id="enBadge" style="display: none;" href="" target="_blank">
+            <img src="./Res/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the Mac App Store" width="180">
+        </a>
+    </div>
+
+    <script>
+        const langButton = document.getElementById('langButton');
+        let isChinese = true;
+
+        function showChinese() {
+            const zhElements = document.querySelectorAll('[id^="zh"]');
+            const enElements = document.querySelectorAll('[id^="en"]');
+            zhElements.forEach(el => el.style.display = 'block');
+            enElements.forEach(el => el.style.display = 'none');
+            langButton.textContent = 'English';
+            isChinese = true;
+        }
+
+        function showEnglish() {
+            const zhElements = document.querySelectorAll('[id^="zh"]');
+            const enElements = document.querySelectorAll('[id^="en"]');
+            zhElements.forEach(el => el.style.display = 'none');
+            enElements.forEach(el => el.style.display = 'block');
+            langButton.textContent = '中文';
+            isChinese = false;
+        }
+
+        langButton.addEventListener('click', () => {
+            if (isChinese) {
+                showEnglish();
+            } else {
+                showChinese();
+            }
+        });
+
+        // 初始化显示中文
+        showChinese();
+    </script>
+</body>
+</html>
+    
