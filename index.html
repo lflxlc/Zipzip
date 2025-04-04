@@ -75,6 +75,24 @@
        .language-switcher button:hover {
             color: #007AFF;
         }
+        /* 设置父元素为 Flex 容器 */
+        .container {
+            display: flex;
+        }
+
+        /* 设置左右两栏的样式 */
+        .left {
+            flex: 2;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .right {
+            flex: 1;
+            background-color: #e0e0e0;
+            padding: 20px;
+            align-content: center;
+        }
     </style>
 </head>
 <body>
@@ -83,7 +101,24 @@
             <button id="langButton">英文</button>
         </div>
         <div class="icon">
-            <i class="fas fa-file-archive"></i>
+
+            <a href="https://apps.apple.com/cn/app/zipzip/id6743997770?mt=12&itscg=30200&itsct=apps_box_artwork&mttnsubad=6743997770"
+                style="position: relative; width: 170px; height: 170px; overflow: hidden; display: inline-block; vertical-align: middle; 
+            --app-icon-mask: url('data:image/svg+xml,%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xml%3Aspace%3D%22preserve%22%20viewBox%3D%220%200%20230.5%20230.5%22%3E%0A%20%20%3Cpath%20fill-rule%3D%22evenodd%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%221.4%22%20clip-rule%3D%22evenodd%22%20d%3D%22M158.2%20230H64.1a320%20320%200%200%201-7-.1c-5%200-10-.5-15-1.3a50.8%2050.8%200%200%201-14.4-4.8%2048.2%2048.2%200%200%201-21-21%2050.9%2050.9%200%200%201-4.8-14.4%20100.7%20100.7%200%200%201-1.3-15v-7l-.1-8.2V64.1a320%20320%200%200%201%20.1-7c0-5%20.5-10%201.3-15a50.7%2050.7%200%200%201%204.8-14.4%2048.2%2048.2%200%200%201%2021-21%2051%2051%200%200%201%2014.4-4.8c5-.8%2010-1.2%2015-1.3a320%20320%200%200%201%207%200l8.2-.1h94.1a320%20320%200%200%201%207%20.1c5%200%2010%20.5%2015%201.3a52%2052%200%200%201%2014.4%204.8%2048.2%2048.2%200%200%201%2021%2021%2050.9%2050.9%200%200%201%204.8%2014.4c.8%205%201.2%2010%201.3%2015a320%20320%200%200%201%20.1%207v102.3l-.1%207c0%205-.5%2010-1.3%2015a50.7%2050.7%200%200%201-4.8%2014.4%2048.2%2048.2%200%200%201-21%2021%2050.8%2050.8%200%200%201-14.4%204.8c-5%20.8-10%201.2-15%201.3a320%20320%200%200%201-7%200l-8.2.1z%22%2F%3E%0A%3C%2Fsvg%3E%0A');">
+
+                <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/7e/22/11/7e221106-ce2c-4525-fc2a-883d2475ee87/AppIcon-0-0-85-220-0-5-0-2x.png/540x540bb.jpg"
+                    alt="Zipzip" style="width: 100%; height: 100%; object-fit: contain;
+                    mask-image: var(--app-icon-mask); -webkit-mask-image: var(--app-icon-mask);" />
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230.5 230.5"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; box-sizing: border-box;">
+                    <path fill="none" stroke="#000" stroke-linejoin="round" stroke-miterlimit="1.4" stroke-opacity=".1"
+                        stroke-width="1"
+                        d="M158.2 230H64.1a320 320 0 0 1-7-.1c-5 0-10-.5-15-1.3a50.8 50.8 0 0 1-14.4-4.8 48.2 48.2 0 0 1-21-21 50.9 50.9 0 0 1-4.8-14.4 100.7 100.7 0 0 1-1.3-15v-7l-.1-8.2V64.1a320 320 0 0 1 .1-7c0-5 .5-10 1.3-15a50.7 50.7 0 0 1 4.8-14.4 48.2 48.2 0 0 1 21-21 51 51 0 0 1 14.4-4.8c5-.8 10-1.2 15-1.3a320 320 0 0 1 7 0l8.2-.1h94.1a320 320 0 0 1 7 .1c5 0 10 .5 15 1.3a52 52 0 0 1 14.4 4.8 48.2 48.2 0 0 1 21 21 50.9 50.9 0 0 1 4.8 14.4c.8 5 1.2 10 1.3 15a320 320 0 0 1 .1 7v102.3l-.1 7c0 5-.5 10-1.3 15a50.7 50.7 0 0 1-4.8 14.4 48.2 48.2 0 0 1-21 21 50.8 50.8 0 0 1-14.4 4.8c-5 .8-10 1.2-15 1.3a320 320 0 0 1-7 0l-8.2.1z"
+                        clip-rule="evenodd" vector-effect="non-scaling-stroke" />
+                </svg>
+            </a>
+            <!-- <i class="fas fa-file-archive"></i> -->
         </div>
         <h1>Zipzip</h1>
         <p id="zhDesc">体验高效便捷的文件压缩与解压缩！支持多种格式，具备加密压解缩功能，可右键Services操作，还能通过拖拽实现功能。遵循沙盒（App Sandbox）安全机制，仅申请必要权限以保障用户数据安全，严格限制应用访问范围。多语言支持，满足全球用户需求。</p>
@@ -115,27 +150,36 @@
         </ul>
     </div>
 
-    <div class="section">
-        <h2 id="zhFormatSupportTitle">格式支持</h2>
-        <h2 id="enFormatSupportTitle" style="display: none;">Format Support</h2>
-        <h3 id="zhCompressionSupport">压缩支持</h3>
-        <h3 id="enCompressionSupport" style="display: none;">Compression Support</h3>
-        <code id="zhCompressionFormats">
-            ZIP, TAR, 7Z, GZ, GZIP, TGZ, BZ2, BZIP2, TBZ2, TBZ, XZ, TXZ, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, WIM, SWM
-        </code>
-        <code id="enCompressionFormats" style="display: none;">
-            ZIP, TAR, 7Z, GZ, GZIP, TGZ, BZ2, BZIP2, TBZ2, TBZ, XZ, TXZ, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, WIM, SWM
-        </code>
-
-        <h3 id="zhDecompressionSupport">解压缩支持</h3>
-        <h3 id="enDecompressionSupport" style="display: none;">Decompression Support</h3>
-        <code id="zhDecompressionFormats">
-            7Z, BZ2, BZIP2, TBZ2, TBZ, GZ, GZIP, TGZ, TAR, XZ, TXZ, ZIP, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, APM, AR, A, DEB, LIB, ARJ, CAB, CHM, CHW, CHI, CHQ, MSI, MSP, DOC, XLS, PPT, CPIO, CRAMFS, DMG, EXT, EXT2, EXT3, EXT4, IMG, FAT, HFS, HFSX, HXS, HXI, HXR, HXQ, HXW, LIT, IHEX, ISO, LZH, LHA, LZMA, MBR, MSLZ, MUB, NSIS, NTFS, RAR, R00, RPM, PPMD, QCOW, QCOW2, QCOW2C, 001, 002, SQUASHFS, UDF, SCAP, UEFIF, VDI, VHD, VMDK, ESD, XAR, PKG, Z, TAZ
-        </code>
-        <code id="enDecompressionFormats" style="display: none;">
-            7Z, BZ2, BZIP2, TBZ2, TBZ, GZ, GZIP, TGZ, TAR, XZ, TXZ, ZIP, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, APM, AR, A, DEB, LIB, ARJ, CAB, CHM, CHW, CHI, CHQ, MSI, MSP, DOC, XLS, PPT, CPIO, CRAMFS, DMG, EXT, EXT2, EXT3, EXT4, IMG, FAT, HFS, HFSX, HXS, HXI, HXR, HXQ, HXW, LIT, IHEX, ISO, LZH, LHA, LZMA, MBR, MSLZ, MUB, NSIS, NTFS, RAR, R00, RPM, PPMD, QCOW, QCOW2, QCOW2C, 001, 002, SQUASHFS, UDF, SCAP, UEFIF, VDI, VHD, VMDK, ESD, XAR, PKG, Z, TAZ
-        </code>
+    <div class="container">
+        <div class="left">
+            <div class="section">
+                <h2 id="zhFormatSupportTitle">格式支持</h2>
+                <h2 id="enFormatSupportTitle" style="display: none;">Format Support</h2>
+                <h3 id="zhCompressionSupport">压缩支持</h3>
+                <h3 id="enCompressionSupport" style="display: none;">Compression Support</h3>
+                <code id="zhCompressionFormats">
+                    ZIP, TAR, 7Z, GZ, GZIP, TGZ, BZ2, BZIP2, TBZ2, TBZ, XZ, TXZ, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, WIM, SWM
+                </code>
+                <code id="enCompressionFormats" style="display: none;">
+                    ZIP, TAR, 7Z, GZ, GZIP, TGZ, BZ2, BZIP2, TBZ2, TBZ, XZ, TXZ, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, WIM, SWM
+                </code>
+        
+                <h3 id="zhDecompressionSupport">解压缩支持</h3>
+                <h3 id="enDecompressionSupport" style="display: none;">Decompression Support</h3>
+                <code id="zhDecompressionFormats">
+                    7Z, BZ2, BZIP2, TBZ2, TBZ, GZ, GZIP, TGZ, TAR, XZ, TXZ, ZIP, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, APM, AR, A, DEB, LIB, ARJ, CAB, CHM, CHW, CHI, CHQ, MSI, MSP, DOC, XLS, PPT, CPIO, CRAMFS, DMG, EXT, EXT2, EXT3, EXT4, IMG, FAT, HFS, HFSX, HXS, HXI, HXR, HXQ, HXW, LIT, IHEX, ISO, LZH, LHA, LZMA, MBR, MSLZ, MUB, NSIS, NTFS, RAR, R00, RPM, PPMD, QCOW, QCOW2, QCOW2C, 001, 002, SQUASHFS, UDF, SCAP, UEFIF, VDI, VHD, VMDK, ESD, XAR, PKG, Z, TAZ
+                </code>
+                <code id="enDecompressionFormats" style="display: none;">
+                    7Z, BZ2, BZIP2, TBZ2, TBZ, GZ, GZIP, TGZ, TAR, XZ, TXZ, ZIP, ZIPX, JAR, XPI, ODT, ODS, DOCX, XLSX, EPUB, APM, AR, A, DEB, LIB, ARJ, CAB, CHM, CHW, CHI, CHQ, MSI, MSP, DOC, XLS, PPT, CPIO, CRAMFS, DMG, EXT, EXT2, EXT3, EXT4, IMG, FAT, HFS, HFSX, HXS, HXI, HXR, HXQ, HXW, LIT, IHEX, ISO, LZH, LHA, LZMA, MBR, MSLZ, MUB, NSIS, NTFS, RAR, R00, RPM, PPMD, QCOW, QCOW2, QCOW2C, 001, 002, SQUASHFS, UDF, SCAP, UEFIF, VDI, VHD, VMDK, ESD, XAR, PKG, Z, TAZ
+                </code>
+            </div>
+        </div>
+        <div class="right">
+            <video id="zhVideo" src="./Res/《Zipzip》（全新 macOS App）.MP4" autoplay></video>
+            <video id="enVideo" src="./Res/Instant Unzip (New macOS App).MP4" autoplay></video>
+        </div>
     </div>
+    
 
     <div class="section">
         <h2 id="zhOperationMethods">操作方式</h2>
@@ -239,13 +283,18 @@
     </div>
 
     <div class="badge">
-        <a id="zhBadge" href="" target="_blank">
-            <img src="./Res/Download_on_the_Mac_App_Store_Badge_CNSC_RGB_blk_092917.svg" alt="Download on the Mac App Store" width="180">
+        
+        <a id="zhBadge" href="https://apps.apple.com/cn/app/zipzip/id6743997770?mt=12&itscg=30200&itsct=apps_box_badge&mttnsubad=6743997770" style="display: inline-block;">
+            <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/zh-cn?releaseDate=1743638400" alt="立即下载，就在 App Store" style="width: 223px; height: 82px; vertical-align: middle; object-fit: contain;" />
         </a>
-        <a id="enBadge" style="display: none;" href="" target="_blank">
-            <img src="./Res/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the Mac App Store" width="180">
+        
+        <a  id="enBadge" href="https://apps.apple.com/cn/app/zipzip/id6743997770?mt=12&itscg=30200&itsct=apps_box_badge&mttnsubad=6743997770" style="display: inline-block;">
+            <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1743638400" alt="立即下载，就在 App Store" style="width: 245px; height: 82px; vertical-align: middle; object-fit: contain;" />
         </a>
     </div>
+    
+    
+    
 
     <script>
         const langButton = document.getElementById('langButton');
